@@ -1,0 +1,19 @@
+{
+  "name": "aplikasirestapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wahyuekamulatsari/AplikasiRestApi.git"
+  },
+  "author": "wahyu eka mulatsari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wahyuekamulatsari/AplikasiRestApi/issues"
+  },
+  "homepage": "https://github.com/wahyuekamulatsari/AplikasiRestApi#readme"
+}
