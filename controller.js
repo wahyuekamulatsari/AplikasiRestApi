@@ -29,3 +29,30 @@ exports.tampilsemuamontir = function (req, res) {
         }
     });
 };
+
+//MENAMPILKAN SEMUA DATA SPAREPART BERDASARKAN ID
+exports.tampilberdasarkanidsparepart = function (req, res) {
+    let id = req.params.id;
+    connection.query('SELECT * FROM t_sparepart WHERE id_sparepart = ?', (id),
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok(rows, res);
+            }
+        });
+};
+
+//MENAMPILKAN SEMUA DATA MONTIR BERDASARKAN ID
+exports.tampilberdasarkanidmontir = function (req, res) {
+    let id = req.params.id;
+    connection.query('SELECT * FROM t_montir WHERE id_montir = ?', (id),
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok(rows, res);
+            }
+        });
+};
+

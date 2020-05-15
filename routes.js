@@ -5,9 +5,15 @@ module.exports = function(app) {
 
     app.route('/')
     .get(jsonku.index);
-    app.route('/tampil')
+    app.route('/tampils')
         .get(jsonku.tampilsemuasparepart);
 
-    app.route('/tampil')
+    app.route('/tampilm')
         .get(jsonku.tampilsemuamontir);
+
+    app.route('/tampil/:id')
+        .get(jsonku.tampilberdasarkanidsparepart);
+
+    app.route('/tampil/:id')
+        .get(jsonku.tampilberdasarkanidmontir);
 }
