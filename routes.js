@@ -63,6 +63,12 @@ module.exports = function(app) {
         .delete(jsonku.hapusSparepart);
 
    app.route('/hapususer')
-        .delete(jsonku.hapususer);    
+        .delete(jsonku.hapususer);  
+        
+    app.route('/hapuslevel')
+        .delete(jsonku.hapusLevel);
+
+    app.route('/hapusservice')
+        .delete(jsonku.hapusservice);    
     
 }

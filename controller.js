@@ -318,3 +318,29 @@ exports.hapususer = function(req, res){
         }
     });
 };
+
+//MENGHAPUS DATA LEVEL
+exports.hapusLevel = function(req, res){
+    var id = req.body.id_level;
+    connection.query('DELETE FROM t_level WHERE id_level=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Berhasil Hapus Data", res)
+        }
+    });
+};
+
+//MENGHAPUS DATA SERVICE
+exports.hapusservice = function(req, res){
+    var id = req.body.id_service;
+    connection.query('DELETE FROM t_service WHERE id_service=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Berhasil Hapus Data", res)
+        }
+    });
+};
