@@ -57,6 +57,12 @@ module.exports = function(app) {
         .put(jsonku.ubahservis);    
 
     app.route('/hapusmontir')
-        .delete(jsonku.hapusmontir);    
+        .delete(jsonku.hapusmontir);  
+        
+    app.route('/hapussparepart')
+        .delete(jsonku.hapusSparepart);
+
+   app.route('/hapususer')
+        .delete(jsonku.hapususer);    
     
 }
