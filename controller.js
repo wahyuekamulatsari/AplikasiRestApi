@@ -225,3 +225,37 @@ exports.ubahsparepart = function (req, res) {
 };
 
 
+//MENGUBAH DATA PADA TABEL USER 
+exports.ubahuser = function (req, res) {
+    var nama_user = req.body.nama_user;
+    var email = req.body.email;
+    var password = req.body.password;
+    var role = req.body.role;
+
+    connection.query('UPDATE t_user SET nama_user=?, email=?, password=?, role=? WHERE id_user=?',
+        [nama_user, email, password, role], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Mengubah Data user !", res)
+            }
+        });
+};
+
+//MENGUBAH DATA PADA TABEL LEVEL
+exports.ubahlevel = function (req, res) {
+    var id_level = req.body.id_level;
+    var nama_level = req.body.nama_level;
+    
+    connection.query('UPDATE t_level SET nama_level=? WHERE id_level=?',
+        [id_level,nama_level], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Mengubah Data level !", res)
+            }
+        });
+};
+
