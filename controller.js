@@ -86,7 +86,7 @@ exports.tampilsemuaservice = function (req, res) {
     });
 };
 
-//mengetahui total harga servis oleh pelanggan
+//MENGETAHUI TOTAL SERVIS OLEK PELANGGAN
 exports.hitungtotal = function (req, res) {
   
     connection.query('SELECT t_user.nama_user, t_servis.tgl_servis t_montir.nama_montire, t_sparepart.nama_sparepart, t_sparepart.harga_sparepart, t_servis.jumlah_sparepart, (t_montir.harga_perjam + t_servis.jumlah_sparepart * t_sparepart.harga_sparepart) AS total_harga_sparepart FROM t_servis INNER JOIN t_sparepart INNER JOIN t_user WHERE t_sparepart.id_sparepart = t_servis.id_sparepat AND t_servis.id_montir = t_montir.id_montir AND t_servis.id_user = t_user.id_user ORDER BY t_user.id_user',
@@ -100,6 +100,21 @@ exports.hitungtotal = function (req, res) {
 
                 response.ok("Berhasilkan menampilkan total service", rows, res)
 
+        });
+};
+
+//MENAMBAHKAN DATA UNTUK TABEL MONTIR
+exports.tambahmontir = function (req, res) {
+    var nama_montir = req.body.nama_montir;
+    var harga_perjam = req.body.harga_perjam;
+
+    connection.query('INSERT INTO t_montir (nama_montir,harga_perjam) VALUES(?,?)',
+        [nama_montir, harga_perjam], function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil menambah data montir", res)
+            }
         });
 };
 

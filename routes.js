@@ -26,5 +26,6 @@ module.exports = function(app) {
     app.route('/hitungtotal')
         .get(jsonku.hitungtotal);
 
-        
+    app.route('/tambahmontir')
+        .post(jsonku.tambahmontir);    
 }
