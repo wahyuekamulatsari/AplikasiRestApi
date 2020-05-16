@@ -86,10 +86,10 @@ exports.tampilsemuaservice = function (req, res) {
     });
 };
 
-//MENGETAHUI TOTAL SERVIS OLEK PELANGGAN
+//MENGETAHUI TOTAL SERVIS OLEH PELANGGAN
 exports.hitungtotal = function (req, res) {
   
-    connection.query('SELECT t_user.nama_user, t_servis.tgl_servis t_montir.nama_montire, t_sparepart.nama_sparepart, t_sparepart.harga_sparepart, t_servis.jumlah_sparepart, (t_montir.harga_perjam + t_servis.jumlah_sparepart * t_sparepart.harga_sparepart) AS total_harga_sparepart FROM t_servis INNER JOIN t_sparepart INNER JOIN t_user WHERE t_sparepart.id_sparepart = t_servis.id_sparepat AND t_servis.id_montir = t_montir.id_montir AND t_servis.id_user = t_user.id_user ORDER BY t_user.id_user',
+    connection.query('SELECT t_user.nama_user, t_service.tgl_service t_montir.nama_montir, t_sparepart.nama_sparepart, t_sparepart.harga_sparepart, t_servis.jumlah_sparepart, (t_montir.harga_perjam + t_service.jumlah_sparepart * t_sparepart.harga_sparepart) AS total_harga_sparepart FROM t_service INNER JOIN t_sparepart INNER JOIN t_user WHERE t_sparepart.id_sparepart = t_service.id_sparepat AND t_service.id_montir = t_montir.id_montir AND t_service.id_user = t_user.id_user ORDER BY t_user.id_user',
         function (error, rows, fields) {
 
             if (error) {
@@ -98,7 +98,7 @@ exports.hitungtotal = function (req, res) {
 
             } else
 
-                response.ok("Berhasilkan menampilkan total service", rows, res)
+                response.ok("BERHASIL MENAMPILKAN TOTAL SERVICE", rows, res)
 
         });
 };
@@ -113,7 +113,7 @@ exports.tambahmontir = function (req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Berhasil menambah data montir", res)
+                response.ok("BERHASIL MENAMBAHKAN DATA MONTIR", res)
             }
         });
 };
@@ -152,6 +152,40 @@ exports.tambahuser = function (req, res) {
             } else {
                 response.ok("Berhasil Menambahkan Data  User", res)
             }
+        });
+};
+
+//menambahkan data untuk tabel level
+exports.tambahlevel = function (req, res) {
+    var nama_level = req.body.nama_level;
+    
+    connection.query('INSERT INTO t_level (nama_level) VALUES(?)',
+        [nama_level], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Menambahkan Data Level", res)
+            }
+        });
+};
+
+//MENAMBAHKAN DATA PADA TABEL SERVICE
+exports.tambahservis = function (req, res) {
+    var tgl_service = req.body.tgl_service;
+    var id_user = req.body.id_user;
+    var id_montir = req.body.id_montir;
+    var jumlah_sparepart = req.body.jumlah_sparepart;
+    var id_sparepart = req.body.id_sparepart;
+    
+    connection.query('INSERT INTO t_service (tgl_service, id_user, id_montir, jumlah_sparepart, id_sparepart) VALUES(?,?,?,?,?)',
+    [ tgl_service, id_user, id_montir, jumlah_sparepart, id_sparepart], 
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("BERHASIL MENAMBAHKAN DATA SERVIS", res)
+        }
         });
 };
 
