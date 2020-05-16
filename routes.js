@@ -5,16 +5,16 @@ module.exports = function(app) {
 
     app.route('/')
     .get(jsonku.index);
-    app.route('/tampils')
+    app.route('/tampilsparepart')
         .get(jsonku.tampilsemuasparepart);
 
-    app.route('/tampilm')
+    app.route('/tampilmontir')
         .get(jsonku.tampilsemuamontir);
 
-    app.route('/tampil/:id')
+    app.route('/tampilsparepart/:id')
         .get(jsonku.tampilberdasarkanidsparepart);
 
-    app.route('/tampil/:id')
+    app.route('/tampilmontir/:id')
         .get(jsonku.tampilberdasarkanidmontir);
 
     app.route('/tambah')
