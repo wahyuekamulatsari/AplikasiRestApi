@@ -189,6 +189,39 @@ exports.tambahservis = function (req, res) {
         });
 };
 
+//MENGUBAH DATA PADA TABEL MONTIR
+exports.ubahmontir = function (req, res) {
+    var id_montir = req.body.id_montir;
+    var nama_montir = req.body.nama_montir;
+    var harga_perjam = req.body.harga_perjam;
 
+    connection.query('UPDATE t_montir SET nama_montir=?, harga_perjam=? WHERE id_montir=?', 
+    [id_montir, nama_montir, harga_perjam,],
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Ubah Data !", res)
+            }
+        });
+};
+
+//MENGUBAH DATA PADA TABEL SPAREPART
+exports.ubahsparepart = function (req, res) {
+    var id_sparepart = req.body.id_sparepart;
+    var nama_sparepart = req.body.nama_sparepart;
+    var harga_sparepart = req.body.harga_sparepart;
+    var satuan = req.body.satuan;
+    
+    connection.query('UPDATE t_sparepart SET nama_sparepart=?, harga_sparepart=?, satuan=? WHERE id_sparepart=?',
+     [nama_sparepart, harga_sparepart, satuan, id_sparepart],
+    function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Berhasil Mengubah Data !", res)
+            }
+        });
+};
 
 
