@@ -27,5 +27,8 @@ module.exports = function(app) {
         .get(jsonku.hitungtotal);
 
     app.route('/tambahmontir')
-        .post(jsonku.tambahmontir);    
+        .post(jsonku.tambahmontir);   
+        
+    app.route('/tambahsparepart')
+        .post(jsonku.tambahsparepart);
 }
