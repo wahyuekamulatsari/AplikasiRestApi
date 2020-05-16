@@ -19,4 +19,12 @@ module.exports = function(app) {
 
     app.route('/tambah')
         .post(jsonku.tambahservice);
+
+    app.route('/tampilservice')
+        .get(jsonku.tampilsemuaservice);
+
+    app.route('/hitungtotal')
+        .get(jsonku.hitungtotal);
+
+        
 }

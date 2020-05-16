@@ -75,4 +75,33 @@ exports.tambahservice = function (req, res) {
         });
 };
 
+//MENAMPILKAN DATA T_service
+exports.tampilsemuaservice = function (req, res) {
+    connection.query('SELECT * FROM t_service', function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok(rows, res)
+        }
+    });
+};
+
+//mengetahui total harga servis oleh pelanggan
+exports.hitungtotal = function (req, res) {
+  
+    connection.query('SELECT t_user.nama_user, t_servis.tgl_servis t_montir.nama_montire, t_sparepart.nama_sparepart, t_sparepart.harga_sparepart, t_servis.jumlah_sparepart, (t_montir.harga_perjam + t_servis.jumlah_sparepart * t_sparepart.harga_sparepart) AS total_harga_sparepart FROM t_servis INNER JOIN t_sparepart INNER JOIN t_user WHERE t_sparepart.id_sparepart = t_servis.id_sparepat AND t_servis.id_montir = t_montir.id_montir AND t_servis.id_user = t_user.id_user ORDER BY t_user.id_user',
+        function (error, rows, fields) {
+
+            if (error) {
+
+                connection.log(error);
+
+            } else
+
+                response.ok("Berhasilkan menampilkan total service", rows, res)
+
+        });
+};
+
+
 
