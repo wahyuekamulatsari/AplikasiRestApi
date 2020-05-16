@@ -144,8 +144,8 @@ exports.tambahuser = function (req, res) {
     var role = req.body.role;
     
 
-    connection.query('INSERT INTO t_user (nama_user, email, password, role) VALUES(?,?,?,?)',
-        [nama_user, email, password, role], 
+    connection.query('INSERT INTO t_user (nama_user, email, password, level) VALUES(?,?,?,?)',
+        [nama_user, email, password, level], 
         function (error, rows, fields) {
             if (error) {
                 console.log(error);

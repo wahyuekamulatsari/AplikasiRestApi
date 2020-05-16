@@ -11,9 +11,7 @@ app.use(bodyParser.json());
 var routes = require('./routes');
 routes(app);
 
-//parser application/json
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+
 
 app.listen(3000, () => {
     console.log ('Server started on port');
