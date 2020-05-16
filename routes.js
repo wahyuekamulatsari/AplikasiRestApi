@@ -55,5 +55,8 @@ module.exports = function(app) {
 
     app.route('/ubahservice')
         .put(jsonku.ubahservis);    
+
+    app.route('/hapusmontir')
+        .delete(jsonku.hapusmontir);    
     
 }
